@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>React Demo - 3</title>
+  <script src="/build/react.js"></script>
+  <script src="/build/react-dom.js"></script>
+  <script src="/build/browser.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    // this.prop.children
+    // 组件的所有子节点
+
+    const NodeList = React.createClass({
+      render () {
+        return (
+          <ol>
+            {
+              React.Children.map(this.props.children, (child) => {
+                console.log(child);
+                return <li>{child}</li>;
+              })
+            }
+          </ol>
+        );
+      }
+    });
+
+    ReactDOM.render(
+      <NodeList>
+        <span>Hello</span>
+        <span>World</span>
+      </NodeList>,
+      document.getElementById('root')
+    );
+  </script>
+</body>
+</html>
